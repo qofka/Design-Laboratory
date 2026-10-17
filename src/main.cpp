@@ -23,44 +23,38 @@ int main(void)
   PORTC = 0x00;
   while(1)
   {
-      for (int i=0; i<14; i++)
+      for (int leds=0; leds<14; leds++)
       {
           
-          _delay_ms(200);
-          for(int j=0; j<10;j++)
+          //_delay_ms(200);
+          for(int tens=0; tens<10;tens++)
           {
-              for(int k=0;k<10;k++)
+              for(int ones=0;ones<10;ones++)
               {
                   for (int t = 0; t < 30; t++)
                     {
                         PORTB |= (1 << PB1);
-                        PORTD = ~numbers[j];
+                        PORTD = ~numbers[tens];
                         PORTB &= ~(1 << PB0);
                         _delay_ms(5);
 
                         PORTB |= (1 << PB0);
-                        PORTD = ~numbers[k];
+                        PORTD = ~numbers[ones];
                         PORTB &= ~(1 << PB1);
                         _delay_ms(5);
                     }
               }
           }
           PORTB |= (1 << PB0) | (1 << PB1);
-          if(i<7)
+          if(leds<7)
           {
             PORTC = (PORTC << 1) | 0x01;
-          //PORTC = i; //licznik binarny
           }
           else
           {
             PORTC  = PORTC >> 1;
           } 
       }
-      //for(int l=0;l<7;l++)
-      //{
-        
-      //  _delay_ms(1000);
-      //}
 
   }
 }
