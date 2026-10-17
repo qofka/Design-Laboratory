@@ -23,7 +23,7 @@ int main(void)
   PORTC = 0x00;
   while(1)
   {
-      for (int leds=0; leds<14; leds++)
+      for (int leds=0; leds<12; leds++)
       {
           
           //_delay_ms(200);
@@ -46,7 +46,7 @@ int main(void)
               }
           }
           PORTB |= (1 << PB0) | (1 << PB1);
-          if(leds<7)
+          if(leds<6)
           {
             PORTC = (PORTC << 1) | 0x01;
           }
