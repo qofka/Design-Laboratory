@@ -23,7 +23,7 @@ int main(void)
   PORTC = 0x00;
   while(1)
   {
-      for (int i=0; i<7; i++)
+      for (int i=0; i<14; i++)
       {
           
           _delay_ms(200);
@@ -46,10 +46,21 @@ int main(void)
               }
           }
           PORTB |= (1 << PB0) | (1 << PB1);
-          PORTC = (PORTC << 1) | 0x01;
+          if(i<7)
+          {
+            PORTC = (PORTC << 1) | 0x01;
           //PORTC = i; //licznik binarny
+          }
+          else
+          {
+            PORTC  = PORTC >> 1;
+          } 
       }
-      PORTC  = 0x00;
+      //for(int l=0;l<7;l++)
+      //{
+        
+      //  _delay_ms(1000);
+      //}
 
   }
 }
